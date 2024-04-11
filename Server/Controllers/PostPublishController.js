@@ -2,12 +2,13 @@ import Blogs from '../Models/PublishPost.js'
 
 
 const handlePublish = async (req, res) => {
-    const { title, content } = req.body
+    const { title, content,image } = req.body
 
     try {
         const result = await Blogs.create({
             title,
-            content
+            content,
+            image
         })
 
         res.status(200).json({ message: "Published Successfully" })

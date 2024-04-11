@@ -23,8 +23,8 @@ function Blog() {
         <>
             <div className='flex flex-col justify-center items-cente'>
                 <div className='p-10 md:p-20'>
-                    <div className='bg-cover bg-center overflow-hidden h-80 w-full rounded-md'>
-                        <img src="https://images.pexels.com/photos/5779600/pexels-photo-5779600.jpeg?auto=compress&cs=tinysrgb&w=600s" alt="" />
+                    <div className="w-full h-[400px]">
+                        <img className='w-full h-full object-' src={selectedBlog.image} alt="" />
                     </div>
                     <div className='flex justify-end gap-2 p-4 '>
                         <p className='text-red-500'> <i className="fa-solid fa-trash"></i></p>
@@ -32,8 +32,7 @@ function Blog() {
 
                     </div>
                     <div className='flex justify-between pb-5'>
-                        <h1 className='text-gray-500'>Author: <span className='font-semibold'>Faisal Farooq</span></h1>
-                        <p className='text-gray-500'>{selectedBlog.updatedAt}</p>
+                       <p className='text-gray-500'>{selectedBlog.updatedAt}</p>
                     </div>
 
                     <h1 className="text-3xl md:text-5xl text-slate-800 font-bold py-4 text-center mb-5 ">{selectedBlog.title}</h1>

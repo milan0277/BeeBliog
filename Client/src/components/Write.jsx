@@ -9,12 +9,13 @@ function Write() {
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+    const [image, setImage] = useState('')
     const nav = useNavigate();
 
 
     const handlePublish = () => {
         if (title && content) {
-            axios.post('http://localhost:8000/write', { title, content })
+            axios.post('http://localhost:8000/write', { title, content,image })
                 .then((res) => {
                     showToastMessage(res.data.message)
                     setTimeout((e) => {
@@ -38,8 +39,14 @@ function Write() {
                 <h1 className='text-2xl md:text-4xl pt-4'>Write Your Blog</h1>
                 <p className='w-40 md:w-96 h-0.5 bg-gray-500'></p>
                 <p>
-                    <span className='pl-10 md:pl-3 text-xl'> <i className="fa-solid fa-plus"></i></span>
-                    <input className='text-2xl w-56 text-orange-800 bg-slate-100 font-bold border-none md:w-96 px-3 py-2 outline-none' type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
+                    <div>
+                        <span className='pl-10 md:pl-3 text-xl'> <i className="fa-solid fa-plus"></i></span>
+                        <input className='text-2xl w-56 text-orange-800 bg-slate-100 font-bold border-none md:w-96 px-3 py-2 outline-none' type="text" placeholder='Image' value={image} onChange={e => setImage(e.target.value)} />
+                    </div>
+                    <div>
+                       <span className='pl-10 md:pl-3 text-xl'> <i className="fa-solid fa-plus"></i></span>
+                       <input className='text-2xl w-56 text-orange-800 bg-slate-100 font-bold border-none md:w-96 px-3 py-2 outline-none ' type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
+                    </div>
                 </p>
                 <textarea className='font-semibold bg-slate-300 rounded-md p-2 text-md border-none outline-none w-80 md:w-[500px] h-80' type="text" placeholder='Tell your Story...' value={content} onChange={e => setContent(e.target.value)}></textarea>
                 <button onClick={handlePublish} className='px-4 py-2 text-md font-semibold text-black rounded-md bg-slate-400'>Publish</button>
